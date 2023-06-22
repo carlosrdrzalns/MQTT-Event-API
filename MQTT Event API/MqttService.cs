@@ -14,6 +14,7 @@ namespace MQTT_Event_API
 {
     public class MqttService : IHostedService
     {
+
         private readonly ILogger<MqttService> _logger;
 
         public MqttService(ILogger<MqttService> logger)
