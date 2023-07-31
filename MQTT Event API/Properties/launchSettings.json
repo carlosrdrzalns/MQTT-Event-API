@@ -12,10 +12,11 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "",
       "environmentVariables": {
         "aio_username": "crodrigueza",
         "aio_topic": "crodrigueza/feeds/pump-data.pump-data",
+        "aio_topic_BR": "crodrigueza/feeds/biologicalreactor.biological-reactor-data",
         "ASPNETCORE_ENVIRONMENT": "Development",
         "aio_key": "aio_BqmP55u5MbSH6xGzkBgJgymZiSib"
       }
@@ -23,7 +24,7 @@
     "MQTT_Event_API": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

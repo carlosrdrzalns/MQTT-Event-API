@@ -27,6 +27,8 @@ namespace MQTT_Event_API
         {
             services.AddSingleton<MqttService>();
             services.AddHostedService<MqttService>();
+            services.AddSingleton<BiologicalReactorMqttService>();
+            services.AddHostedService<BiologicalReactorMqttService>();
             //services.AddControllers();
         }
 
