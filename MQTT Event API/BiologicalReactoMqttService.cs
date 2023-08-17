@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using System.Threading;
 using MQTTnet;
-
+using System.Net.Http;
 using Microsoft.Extensions.Logging;
 using MQTTnet.Client;
 using System.Text;
@@ -16,6 +16,7 @@ namespace MQTT_Event_API
     {
 
         private readonly ILogger<BiologicalReactorMqttService> _logger;
+        private static readonly HttpClient client = new HttpClient();
 
         public BiologicalReactorMqttService(ILogger<BiologicalReactorMqttService> logger)
         {
@@ -50,15 +51,23 @@ namespace MQTT_Event_API
             
 
             // Handler for received messages
-            mqttClient.ApplicationMessageReceivedAsync += e =>
+            mqttClient.ApplicationMessageReceivedAsync += async e =>
             {
                 string message = Encoding.UTF8.GetString(e.ApplicationMessage.PayloadSegment);
 
                 //Tendremos que añadir aquí el código para distribuir los datos a los servicios que los gestionen
 
-                Console.WriteLine("Received application message.");
-                return null;
-                
+                try
+                {
+                    using StringContent jsonContent = new StringContent(message, Encoding.UTF8,  "application/json");
+                    HttpResponseMessage response = await client.PostAsync("https://localhost:44379/BiologicalReactor/postData", jsonContent);
+
+                    Console.WriteLine("Received application message.");
+                }catch(System.Exception exp)
+                {
+                    var a = exp;
+                }
+              
             };
 
             // Connect and subscribe

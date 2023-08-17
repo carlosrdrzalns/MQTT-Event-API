@@ -9,6 +9,7 @@ using MQTTnet;
 using Microsoft.Extensions.Logging;
 using MQTTnet.Client;
 using System.Text;
+using System.Net.Http;
 
 namespace MQTT_Event_API
 {
@@ -16,6 +17,7 @@ namespace MQTT_Event_API
     {
 
         private readonly ILogger<MqttService> _logger;
+        private static readonly HttpClient client = new HttpClient();
 
         public MqttService(ILogger<MqttService> logger)
         {
@@ -50,15 +52,22 @@ namespace MQTT_Event_API
             
 
             // Handler for received messages
-            mqttClient.ApplicationMessageReceivedAsync += e =>
+            mqttClient.ApplicationMessageReceivedAsync += async e =>
             {
                 string message = Encoding.UTF8.GetString(e.ApplicationMessage.PayloadSegment);
 
-                //Tendremos que añadir aquí el código para distribuir los datos a los servicios que los gestionen
+                try
+                {
+                    using StringContent jsonContent = new StringContent(message, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = await client.PostAsync("https://localhost:44379/WaterPump/postData", jsonContent);
 
-                Console.WriteLine("Received application message.");
-                return null;
-                
+                    Console.WriteLine("Received application message.");
+                }
+                catch (System.Exception exp)
+                {
+                    var a = exp;
+                }
+
             };
 
             // Connect and subscribe

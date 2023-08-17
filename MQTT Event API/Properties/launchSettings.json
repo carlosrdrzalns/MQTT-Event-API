@@ -4,7 +4,7 @@
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:55281",
-      "sslPort": 0
+      "sslPort": 44323
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -12,11 +12,10 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "",
       "environmentVariables": {
         "aio_username": "crodrigueza",
-        "aio_topic": "crodrigueza/feeds/pump-data.pump-data",
         "aio_topic_BR": "crodrigueza/feeds/biologicalreactor.biological-reactor-data",
+        "aio_topic": "crodrigueza/feeds/pump-data.pump-data",
         "ASPNETCORE_ENVIRONMENT": "Development",
         "aio_key": "aio_BqmP55u5MbSH6xGzkBgJgymZiSib"
       }
@@ -24,7 +23,6 @@
     "MQTT_Event_API": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
