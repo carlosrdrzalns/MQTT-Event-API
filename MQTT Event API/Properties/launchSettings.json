@@ -13,11 +13,11 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "aio_username": "crodrigueza",
+        "aio_username": "crodrigueza_",
         "aio_topic_BR": "crodrigueza/feeds/biologicalreactor.biological-reactor-data",
-        "aio_topic": "crodrigueza/feeds/pump-data.pump-data",
+        "aio_topic": "crodrigueza_/feeds/chillerwater.chillerwaterdata",
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "aio_key": "aio_BqmP55u5MbSH6xGzkBgJgymZiSib"
+        "aio_key": "aio_ptaE898fp4iRZH3q6Jmy7qylYzrz"
       }
     },
     "MQTT_Event_API": {

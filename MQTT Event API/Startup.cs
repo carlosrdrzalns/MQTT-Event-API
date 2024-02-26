@@ -25,10 +25,10 @@ namespace MQTT_Event_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<MqttService>();
-            services.AddHostedService<MqttService>();
-            services.AddSingleton<BiologicalReactorMqttService>();
-            services.AddHostedService<BiologicalReactorMqttService>();
+            services.AddSingleton<CWMqttService>();
+            services.AddHostedService<CWMqttService>();
+            //services.AddSingleton<BiologicalReactorMqttService>();
+            //services.AddHostedService<BiologicalReactorMqttService>();
             //services.AddControllers();
         }
 
